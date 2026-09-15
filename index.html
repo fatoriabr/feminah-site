@@ -89,6 +89,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(251,247,240,.93);backdrop-
 .fracture:after{left:50%;transform:rotate(-14deg);transform-origin:left}
 .problem-statement{text-align:center;font-family:Georgia,serif;font-size:clamp(30px,4vw,56px);max-width:980px;margin:26px auto 0;line-height:1.15}
 .problem-statement em{color:#f1a7c6}
+.flow-connector{display:none}
 
 .solution{background:linear-gradient(180deg,#fff 0%,#fbf6ef 100%)}
 .solution-intro{max-width:900px;margin-bottom:72px}
@@ -1117,15 +1118,20 @@ nav{background:rgba(251,247,240,.96)}
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     scroll-snap-type:x proximity;
-    gap:18px;
     padding:0 24px 14px;
   }
   .flow-row::-webkit-scrollbar{display:none}
-  .flow-row:before{
-    left:24px;
-    right:24px;
-    top:31px;
+  .flow-row:before{display:none}
+  .flow-connector{
+    display:block;
+    flex:0 0 20px;
+    align-self:flex-start;
+    height:2px;
+    margin-top:29px;
+    background:#e3b3c3;
+    opacity:.85;
   }
+  .flow-connector.fade{background:linear-gradient(90deg,#e3b3c3,transparent)}
   .flow-step{flex:0 0 108px;scroll-snap-align:start}
   .flow-step strong{font-size:12.5px}
   .flow-step span{font-size:10.5px}
@@ -1187,9 +1193,13 @@ nav{background:rgba(251,247,240,.96)}
 <div class="flow-broken reveal show">
 <div class="flow-row">
 <div class="flow-step"><div class="flow-dot">1</div><strong>Mulher elegível</strong><span>Risco nem sempre identificado</span></div>
+<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">2</div><strong>Exame</strong><span>Evento pontual</span></div>
+<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">3</div><strong>Laudo</strong><span>Informação dispersa</span></div>
+<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">4</div><strong>Resultado alterado</strong><span>Necessidade de próximo passo</span></div>
+<div class="flow-connector fade"></div>
 <div class="flow-step break"><div class="flow-dot">?</div><strong>Seguimento</strong><span>Quem acompanha?</span></div>
 </div>
 <p class="flow-hint">◀ arraste para o lado ▶</p>
