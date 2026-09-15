@@ -1091,6 +1091,26 @@ nav{background:rgba(251,247,240,.96)}
     border-bottom:none;
   }
 }
+@media(max-width:760px){
+  .flow-broken{padding-left:0;padding-right:0}
+  .flow-row{
+    display:flex;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+    gap:18px;
+    padding:6px 24px 14px;
+  }
+  .flow-row::-webkit-scrollbar{display:none}
+  .flow-row:before{
+    left:24px;
+    right:24px;
+    top:31px;
+  }
+  .flow-step{flex:0 0 108px;scroll-snap-align:start}
+  .flow-step strong{font-size:12.5px}
+  .flow-step span{font-size:10.5px}
+}
 </style>
 </head>
 <body>
