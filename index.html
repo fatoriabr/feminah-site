@@ -1107,32 +1107,41 @@ nav{background:rgba(251,247,240,.96)}
   .flow-hint{
     display:block;
     text-align:center;
-    color:rgba(255,255,255,.4);
-    font-size:10.5px;
-    letter-spacing:.04em;
-    margin-top:2px;
+    font-family:Georgia,'Times New Roman',serif;
+    font-style:italic;
+    color:var(--pink);
+    font-size:12.5px;
+    letter-spacing:.02em;
+    margin-top:6px;
+    opacity:.9;
   }
+  .flow-hint:before{content:"‹ "}
+  .flow-hint:after{content:" ›"}
   .flow-row{
-    display:flex;
-    align-items:flex-start;
     overflow-x:auto;
     -webkit-overflow-scrolling:touch;
     scroll-snap-type:x proximity;
     padding:0 24px 14px;
   }
   .flow-row::-webkit-scrollbar{display:none}
-  .flow-row:before{display:none}
-  .flow-connector{
-    display:block;
-    flex:0 0 20px;
-    align-self:flex-start;
+  .flow-track{
+    display:flex;
+    align-items:flex-start;
+    gap:18px;
+    width:max-content;
+    position:relative;
+  }
+  .flow-track:before{
+    content:"";
+    position:absolute;
+    left:54px;
+    right:126px;
+    top:31px;
     height:2px;
-    margin-top:29px;
-    background:#e3b3c3;
+    background:linear-gradient(90deg,#e3b3c3 0%,#e3b3c3 75%,transparent 100%);
     opacity:.85;
   }
-  .flow-connector.fade{background:linear-gradient(90deg,#e3b3c3,transparent)}
-  .flow-step{flex:0 0 108px;scroll-snap-align:start}
+  .flow-step{flex:0 0 108px;scroll-snap-align:start;position:relative;z-index:1}
   .flow-step strong{font-size:12.5px}
   .flow-step span{font-size:10.5px}
 }
@@ -1191,17 +1200,13 @@ nav{background:rgba(251,247,240,.96)}
 <h2 class="title reveal show">Onde o cuidado se perde no modelo atual.</h2>
 <p class="lead reveal show">A paciente entra no sistema, realiza o exame e recebe um laudo. Quando as etapas não estão conectadas, o acompanhamento depende de iniciativas isoladas — e a jornada pode se romper.</p>
 <div class="flow-broken reveal show">
-<div class="flow-row">
+<div class="flow-row"><div class="flow-track">
 <div class="flow-step"><div class="flow-dot">1</div><strong>Mulher elegível</strong><span>Risco nem sempre identificado</span></div>
-<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">2</div><strong>Exame</strong><span>Evento pontual</span></div>
-<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">3</div><strong>Laudo</strong><span>Informação dispersa</span></div>
-<div class="flow-connector"></div>
 <div class="flow-step"><div class="flow-dot">4</div><strong>Resultado alterado</strong><span>Necessidade de próximo passo</span></div>
-<div class="flow-connector fade"></div>
 <div class="flow-step break"><div class="flow-dot">?</div><strong>Seguimento</strong><span>Quem acompanha?</span></div>
-</div>
+</div></div>
 <p class="flow-hint">◀ arraste para o lado ▶</p>
 </div>
 <div class="problem-statement reveal show">O verdadeiro desafio não é realizar o exame. <em>É não perder a paciente depois dele.</em></div>
