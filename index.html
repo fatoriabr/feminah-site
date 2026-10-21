@@ -1367,17 +1367,30 @@ document.querySelectorAll('.demo-form').forEach(form=>{
     if(!btn) return;
     const original=btn.textContent;
     const ajaxUrl='https://formsubmit.co/ajax/'+form.action.split('/').pop();
+    let note=form.querySelector('.demo-status');
+    if(!note){
+      note=document.createElement('p');
+      note.className='demo-status';
+      note.setAttribute('role','status');
+      note.setAttribute('aria-live','polite');
+      note.style.cssText='margin:12px 0 0;font-size:.9rem;text-align:center;line-height:1.4';
+      btn.insertAdjacentElement('afterend',note);
+    }
     btn.disabled=true;
     btn.textContent='Enviando...';
+    note.textContent='Enviando sua solicitação. Isso pode levar até 1 minuto, por favor não feche esta página.';
     fetch(ajaxUrl,{
       method:'POST',
       headers:{'Accept':'application/json'},
       body:new FormData(form)
     }).then(res=>res.json()).then(data=>{
+      if(String(data.success)!=='true') throw new Error('falha');
       btn.textContent='Solicitação enviada!';
+      note.textContent='Recebemos sua solicitação. Em breve a equipe da Feminah entrará em contato.';
       form.reset();
     }).catch(()=>{
       btn.textContent='Erro ao enviar. Tente novamente.';
+      note.textContent='Não foi possível enviar agora. Tente novamente ou escreva para contato@feminahrastreamento.com.br.';
     }).finally(()=>{
       setTimeout(()=>{btn.textContent=original;btn.disabled=false;},3200);
     });
